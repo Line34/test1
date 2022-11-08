@@ -1,0 +1,124 @@
+import java.util.ArrayList;
+public interface IParams {
+public int getBig();
+public int getMedium();
+public int getSmall();
+public ArrayList<Integer> getPlanSignUp();
+}
+
+
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+
+interface ISignUp{
+    public void print();
+    public boolean addStudent (int stuType);
+public static IParams parse() throws Exception{
+   return new SchoolSystem();
+ }
+}
+
+
+import java.util.ArrayList;
+import java.util.Scanner;
+public class SchoolSystem implements ISignUp,IParams{
+ static Scanner in=new Scanner(System.in);
+ ArrayList<String> sc=new ArrayList<String>();
+ Integer big; Integer medium;Integer small;
+ SchoolSystem(){};
+ SchoolSystem(Integer big1, Integer medium1, Integer small1){
+  big=big1;
+ medium=medium1;
+small=small1;
+ }
+ public void setBig(Integer big1) {
+	 big=big1;
+ 
+ }
+
+ public void setMedium(Integer medium1) {
+  medium=medium1;
+ }
+ public void setSmall(Integer small1) {
+  small=small1;
+ }
+ public int getBig() {
+  return big;
+ }
+ public int getMedium() {
+  return medium;
+ }
+ public int getSmall() {
+  return small;
+ }
+ public ArrayList<Integer> getPlanSignUp() {
+  ArrayList<Integer> arr=new ArrayList<Integer>();
+  System.out.print("入学的学生人数为:");
+  int total=in.nextInt();
+  System.out.print("这几个学生要去的班级是:");
+  for(int i=0;i<total;i++) {
+   arr.add(in.nextInt());
+  }
+  return arr;
+ }
+ public static IParams parse()throws Exception{
+  System.out.print("输入幼儿园三个班的剩余名额:");
+  return new SchoolSystem(in.nextInt(),in.nextInt(),in.nextInt());
+ }
+ public void print() {
+  for(int i=0;i<sc.size();i++) {
+   System.out.print(sc.get(i)+",");
+  }
+ }
+ public boolean addStudent(Integer stuType) {
+  switch(stuType) {
+  case 1:if(getBig()>=1) {
+   setBig(getBig()-1);
+   sc.add("true");
+   return true;
+  }
+  else {
+   sc.add("false");
+   return false;
+  }
+  case 2:if(getMedium()>=1) {
+   setMedium(getMedium()-1);
+   sc.add("true");
+   return true;
+  }
+  else {
+   sc.add("false");
+   return false;
+  }
+  case 3:if(getSmall()>=1) {
+   setSmall(getSmall()-1);
+   sc.add("true");
+   return true;
+  }
+  else {
+   sc.add("false");
+   return false;
+  }
+  }
+  return false;
+ }
+ public boolean addStudent(int stuType) {
+  return false;
+ }
+ 
+}
+
+
+import java.util.ArrayList;
+
+public class main {
+ public static void main(String[] args) throws Exception {
+        IParams params = SchoolSystem.parse();
+        SchoolSystem sc = new SchoolSystem (params.getBig(), params.getMedium(),params.getSmall());
+        ArrayList<Integer> plan = params. getPlanSignUp ();
+        for (int i = 0; i < plan.size(); i++) {
+            sc. addStudent (plan.get(i));
+        }
+        sc.print();
+    }
+}
