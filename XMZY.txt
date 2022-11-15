@@ -111,7 +111,7 @@ small=small1;
 
 import java.util.ArrayList;
 
-public class main {                  //主函数
+public class main {                  
  public static void main(String[] args) throws Exception {
         IParams params = SchoolSystem.parse();
         SchoolSystem sc = new SchoolSystem (params.getBig(), params.getMedium(),params.getSmall());
