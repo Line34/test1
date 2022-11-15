@@ -1,9 +1,9 @@
 import java.util.ArrayList;
 public interface IParams {
-public int getBig();
-public int getMedium();
-public int getSmall();
-public ArrayList<Integer> getPlanSignUp();
+public int getBig();          //获取大班名额
+public int getMedium();         //获取中班名额
+public int getSmall();        //获取小班名额
+public ArrayList<Integer> getPlanSignUp();         //获取入学序列
 }
 
 
@@ -11,9 +11,9 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
 interface ISignUp{
-    public void print();
-    public boolean addStudent (int stuType);
-public static IParams parse() throws Exception{
+    public void print();                  //输出结果
+    public boolean addStudent (int stuType);        //判断名额有无
+public static IParams parse() throws Exception{               //解析命令行输入参数
    return new SchoolSystem();
  }
 }
@@ -21,7 +21,7 @@ public static IParams parse() throws Exception{
 
 import java.util.ArrayList;
 import java.util.Scanner;
-public class SchoolSystem implements ISignUp,IParams{
+public class SchoolSystem implements ISignUp,IParams{        //实现ISignUp,IParams
  static Scanner in=new Scanner(System.in);
  ArrayList<String> sc=new ArrayList<String>();
  Integer big; Integer medium;Integer small;
@@ -51,7 +51,7 @@ small=small1;
  public int getSmall() {
   return small;
  }
- public ArrayList<Integer> getPlanSignUp() {
+ public ArrayList<Integer> getPlanSignUp() {    \\输入要入学的人安排
   ArrayList<Integer> arr=new ArrayList<Integer>();
   System.out.print("入学的学生人数为:");
   int total=in.nextInt();
@@ -61,7 +61,7 @@ small=small1;
   }
   return arr;
  }
- public static IParams parse()throws Exception{
+ public static IParams parse()throws Exception{        \\输入幼儿园的剩余名额
   System.out.print("输入幼儿园三个班的剩余名额:");
   return new SchoolSystem(in.nextInt(),in.nextInt(),in.nextInt());
  }
@@ -70,7 +70,7 @@ small=small1;
    System.out.print(sc.get(i)+",");
   }
  }
- public boolean addStudent(Integer stuType) {
+ public boolean addStudent(Integer stuType) {      //判断是否无剩余名额
   switch(stuType) {
   case 1:if(getBig()>=1) {
    setBig(getBig()-1);
@@ -111,7 +111,7 @@ small=small1;
 
 import java.util.ArrayList;
 
-public class main {
+public class main {                  //主函数
  public static void main(String[] args) throws Exception {
         IParams params = SchoolSystem.parse();
         SchoolSystem sc = new SchoolSystem (params.getBig(), params.getMedium(),params.getSmall());
