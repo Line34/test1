@@ -12,7 +12,7 @@ import java.io.InputStreamReader;
 
 interface ISignUp{
     public void print();                  //输出结果
-    public boolean addStudent (int stuType);        //判断名额有无
+    public boolean addStudent (int stuType);        //判断有无名额
 public static IParams parse() throws Exception{               //解析命令行输入参数
    return new SchoolSystem();
  }
@@ -70,6 +70,7 @@ small=small1;
    System.out.print(sc.get(i)+",");
   }
  }
+
  public boolean addStudent(Integer stuType) {      //判断是否无剩余名额.
   switch(stuType) {
   case 1:if(getBig()>=1) {
@@ -120,5 +121,4 @@ public class main {
             sc. addStudent (plan.get(i));
         }
         sc.print();
-    }
-}
+    }}
