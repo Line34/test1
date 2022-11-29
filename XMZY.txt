@@ -70,7 +70,8 @@ small=small1;
    System.out.print(sc.get(i)+",");
   }
  }
- public boolean addStudent(Integer stuType) {      //判断有无剩余名额
+
+ public boolean addStudent(Integer stuType) {      //判断是否无剩余名额.
   switch(stuType) {
   case 1:if(getBig()>=1) {
    setBig(getBig()-1);
