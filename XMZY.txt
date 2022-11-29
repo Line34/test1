@@ -13,7 +13,7 @@ import java.io.InputStreamReader;
 interface ISignUp{
     public void print();                  //输出结果
     public boolean addStudent (int stuType);        //判断有无名额
-public static IParams parse() throws Exception{               //解析命令行输入参数
+public static IParams parse() throws Exception{               //解析命令行输入参数。
    return new SchoolSystem();
  }
 }
